@@ -6,6 +6,6 @@ def print_last_digit(number):
     a = 1
     lgital = number % 10
     if number == 1:
-	number *= -1
-    print("{:d}".format(lgital), end="")
+        number *= -1
+        print("{:d}".format(lgital), end="")
     return lgital
