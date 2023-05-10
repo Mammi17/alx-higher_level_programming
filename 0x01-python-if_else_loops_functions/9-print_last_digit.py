@@ -7,5 +7,5 @@ def print_last_digit(number):
     lgital = number % 10
     if number == 1:
         number *= -1
-        print("{:dd}".format(lgital), end="")
+        print("{:d}".format(lgital), end="")
     return lgital
