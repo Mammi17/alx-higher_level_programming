@@ -6,9 +6,9 @@ if number < 0:
 else:
 	gital = number % 10
 if gital > 5:
-	print(f"Last digit of {:d} is {:d} and is greater than 5", gital)
+	print(f"Last digit of {number:d} is {gital:d} and is greater than 5")
 elif gital == 0:
-	print(f"Last digit of {:d} is {:d} and is equal to 0", gital)
+	print(f"Last digit of {number:d} is {gital:d} and is equal to 0")
 elif gital < 6 and gital != 0:
-	print(f"Last digit of {:d} is {:d}", gital, end= " ")
+	print(f"Last digit of {number:d} is {gital:d}", end= " ")
 	print("and is not equal to zero.")
