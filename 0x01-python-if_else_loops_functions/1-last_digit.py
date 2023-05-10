@@ -8,7 +8,7 @@ else:
 if gital > 5:
 	print(f"Last digit of {number:d} is {gital:d} and is greater than 5")
 elif gital == 0:
-	print(f"Last digit of {number:d} is {gital:d} and is equal to 0")
+	print(f"Last digit of {number:d} is {gital:d} and is 0")
 elif gital < 6 and gital != 0:
-	print(f"Last digit of {number:d} is {gital:d}", end= " ")
-	print("and is not equal to zero.")
+	print(f"Last digit of {number:d} is {gital:d}", end= "")
+	print("and is less than 6 and not 0")
