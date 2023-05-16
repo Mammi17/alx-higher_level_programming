@@ -28,13 +28,13 @@ void reverse_listint(listint_t **head)
  * @head: double pointer
  * Return: 1 or 0
  */
+
 int is_palindrome(listint_t **head)
 {
 	listint_t *l = *head, *f = *head, *t = *head, *d = NULL;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
-
 	while (1)
 	{
 		f = f->next->next;
@@ -50,9 +50,7 @@ int is_palindrome(listint_t **head)
 		}
 		l = l->next;
 	}
-
 	reverse_listint(&d);
-
 	while (d && t)
 	{
 		if (t->n == d->n)
@@ -63,7 +61,6 @@ int is_palindrome(listint_t **head)
 		else
 			return (0);
 	}
-
 	if (!d)
 		return (1);
 
