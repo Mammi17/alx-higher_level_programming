@@ -12,7 +12,7 @@ void reverse_listint(listint_t **head)
 	listint_t *ncurrent = *head;
 	listint_t *suiv = NULL;
 
-	while (current)
+	while (ncurrent)
 	{
 		suiv = ncurrent->next;
 		ncurrent->next = prev;
