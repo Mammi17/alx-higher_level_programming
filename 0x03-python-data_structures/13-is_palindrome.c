@@ -1,12 +1,12 @@
 #include "lists.h"
 #include <stdio.h>
 /**
- * reverse_listint - reverses a linked list
+ * revers_listint - reverses a linked list
  * @head: a pointer
  * Return: void
  */
 
-void reverse_listint(listint_t **head)
+void revers_listint(listint_t **head)
 {
 	listint_t *prece = NULL;
 	listint_t *ncurrent = *head;
