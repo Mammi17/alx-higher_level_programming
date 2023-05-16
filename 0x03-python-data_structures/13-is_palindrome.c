@@ -15,7 +15,7 @@ void revers_listint(listint_t **head)
 	while (ncurrent)
 	{
 		suiv = ncurrent->next;
-		ncurrent->next = prev;
+		ncurrent->next = prece;
 		prece = ncurrent;
 		ncurrent = suiv;
 	}
@@ -50,7 +50,7 @@ int is_palindrome(listint_t **head)
 		}
 		l = l->next;
 	}
-	reverse_listint(&d);
+	revers_listint(&d);
 	while (d && t)
 	{
 		if (t->n == d->n)
