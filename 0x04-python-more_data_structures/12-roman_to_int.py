@@ -1,12 +1,17 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    if type(roman_string) is not str or roman_string is None:
-        return dec = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100,
-                     "D": 500, "M": 1000}
-        dics = [dec.get(a) for a in roman_string]
-        result = 0
-        for b in range(len(dics)):
-            result += dics[b]
-            if dics[b - 1] < dics[b] and b != 0:
-                result += (dics[b] - dics[b - 1] - dics[b - 1]
-        return result
+    a_dictionary = {'M': 1000, 'D': 500, 'C': 100,
+                     'L': 50, 'X': 10, 'V': 5, 'I': 1}
+    if roman_string is None or type(roman_string) != str:
+        return 0
+    count = 0
+    prece = 0
+    current = 0
+    for a in range(len(roman_string)):
+        current = a_dictionary[roman_string[a]]
+        if current > prece:
+            count += current - 2 * prece
+        else:
+            count += current
+        prece = current
+    return count
