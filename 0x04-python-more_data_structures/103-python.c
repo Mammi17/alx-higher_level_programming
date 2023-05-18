@@ -3,6 +3,7 @@
 /**
  * print_python_list - Prints basic info about Python lists.
  * @p: A PyObject
+ * Return: void
  */
 
 void print_python_list(PyObject *p)
@@ -14,18 +15,18 @@ void print_python_list(PyObject *p)
 
 	l = (PyListObject *)p;
 	val = (PyVarObject *)p;
-	taille = val->ob_size, alloue = l->allocated;
+	taille = val->ob_size;
+	alloue = l->allocated;
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %d\n", taille);
 	printf("[*] Allocated = %d\n", alloue);
-
 	a = 0
 	while (a < taille)
 	{
 		tpe = l->ob_item[a]->ob_type->tp_name;
 		printf("Element %d: %s\n", a, tpe);
 		if (strcmp(tpe, "bytes") == 0)
-			print_python_bytes(list->ob_item[a]);
+			print_python_bytes(l->ob_item[a]);
 		a++;
 	}
 }
@@ -33,6 +34,7 @@ void print_python_list(PyObject *p)
 /**
  * print_python_bytes - Prints basic info about Python byte objects.
  * @p: A PyObject byte object.
+ * Return: void
  */
 void print_python_bytes(PyObject *p)
 {
@@ -59,10 +61,11 @@ void print_python_bytes(PyObject *p)
 	a = 0;
 	while (a < taille)
 	{
-		printf("%02hhx", bytes->ob_sval[a]);
+		printf("%02hhx", bte->ob_sval[a]);
 		if (a == (taille - 1))
 			printf("\n");
 		else
 			printf(" ");
+		a++;
 	}
 }
