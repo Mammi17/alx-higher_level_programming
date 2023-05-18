@@ -1,4 +1,4 @@
-#include <python.h>
+#include <Python.h>
 
 /**
  * print_python_list - Prints basic info about Python lists.
@@ -45,10 +45,8 @@ void print_python_bytes(PyObject *p)
 		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
-
 	printf("  size: %ld\n", ((PyVarObject *)p)->ob_size);
 	printf("  trying string: %s\n", bte->ob_sval);
-
 	if (((PyVarObject *)p)->ob_size > 10)
 		taille = 10;
 	else
