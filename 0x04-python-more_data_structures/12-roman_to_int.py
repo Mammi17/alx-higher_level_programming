@@ -5,8 +5,8 @@ def roman_to_int(roman_string):
                      "D": 500, "M": 1000}
         dics = [dec.get(a) for a in roman_string]
         result = 0
-        for b in range(len(decs)):
-            result += decs[b]
+        for b in range(len(dics)):
+            result += dics[b]
             if dics[b - 1] < dics[b] and b != 0:
                 result += (dics[b] - dics[b - 1] - dics[b - 1]
         return result
