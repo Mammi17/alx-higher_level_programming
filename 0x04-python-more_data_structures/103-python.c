@@ -1,4 +1,5 @@
 #include <python.h>
+
 /**
  * print_python_list - Prints basic info about Python lists.
  * @p: A PyObject
@@ -14,7 +15,6 @@ void print_python_list(PyObject *p)
 	l = (PyListObject *)p;
 	val = (PyVarObject *)p;
 	taille = val->ob_size, alloue = l->allocated;
-
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %d\n", taille);
 	printf("[*] Allocated = %d\n", alloue);
@@ -24,7 +24,7 @@ void print_python_list(PyObject *p)
 	{
 		tpe = l->ob_item[a]->ob_type->tp_name;
 		printf("Element %d: %s\n", a, tpe);
-		if (strcmp(type, "bytes") == 0)
+		if (strcmp(tpe, "bytes") == 0)
 			print_python_bytes(list->ob_item[a]);
 		a++;
 	}
