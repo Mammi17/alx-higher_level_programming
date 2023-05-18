@@ -10,11 +10,9 @@ void print_python_list(PyObject *p)
 {
 	int taille, alloue, a;
 	const char *tpe;
-	PyListObject *l;
-	PyVarObject *val;
+	PyListObject *l = (PyListObject *)p;
+	PyVarObject *val = (PyVarObject *)p;
 
-	l = (PyListObject *)p;
-	val = (PyVarObject *)p;
 	taille = val->ob_size;
 	alloue = l->allocated;
 	printf("[*] Python list info\n");
@@ -39,9 +37,8 @@ void print_python_list(PyObject *p)
 void print_python_bytes(PyObject *p)
 {
 	unsigned char a, taille;
-	PyBytesObject *bte;
-	
-	bte = (PyBytesObject *)p;
+	PyBytesObject *bte = (PyBytesObject *)p;
+
 	printf("[.] bytes object info\n");
 	if (strcmp(p->ob_type->tp_name, "bytes") != 0)
 	{
