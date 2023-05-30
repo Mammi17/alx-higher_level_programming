@@ -11,4 +11,4 @@ def magic_calculation(a, b):
         except:
             count = b + a
             break
-        return (count)
+    return (count)
