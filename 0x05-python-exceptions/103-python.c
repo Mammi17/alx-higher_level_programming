@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <object.h>
-#include <listobject.h>
-#include <bytesobject.h>
-#include <floatobject.h>
 #include <string.h>
 #include <Python.h>
+#include <object.h>
 /**
  * print_python_bytes - gives data of the PyBytesObject
  * @p: A PyObject
