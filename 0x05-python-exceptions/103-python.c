@@ -1,8 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <Python.h>
-#include <object.h>
+
 /**
  * print_python_bytes - gives data of the PyBytesObject
  * @p: A PyObject
@@ -10,27 +8,34 @@
 
 void print_python_bytes(PyObject *p)
 {
-	Py_ssize_t l = 0, a = 0;
+	size_t a, bte;
 	char *str = NULL;
 
-	fflush(stdout);
 	printf("[.] bytes object info\n");
-	if (!PyBytes_CheckExact(p))
+	if (!PyBytes_Check(p))
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
+		fflush(stdout);
 		return;
 	}
-	l = PyBytes_Size(p);
-	printf("  size: %zd\n", l);
-	str = (assert(PyBytes_Check(p)), (((PyBytesObject *)(p))->ob_sval));
+	str = ((PyBytesObject *)(p))->ob_sval;
+	bte = PyBytes_Size(p);
+	printf("  size: %ld\n", bte);
 	printf("  trying string: %s\n", str);
-	printf("  first %zd bytes:", l < 10 ? l + 1 : 10);
-	while (a < l + 1 && a < 10)
+	if (bte >= 10)
+		bte = 10;
+	else
+		bte++;
+	printf("  first %ld bytes: ", bte);
+	a = 0;
+	while (a < bte - 1)
 	{
-		printf(" %02hhx", str[a]);
+		printf("%02hhx ", str[a]);
 		a++;
 	}
+	printf("%02hhx", str[a]);
 	printf("\n");
+	fflush(stdout);
 }
 
 /**
@@ -39,35 +44,34 @@ void print_python_bytes(PyObject *p)
  */
 void print_python_list(PyObject *p)
 {
-	Py_ssize_t l, al, a;
-	const char *point;
-	PyListObject *current = (PyListObject *)p;
-	PyVarObject *v = (PyVarObject *)p;
-
-	l = v->ob_size;
-	al = current->allocated;
-
-	fflush(stdout);
+	size_t a, al, l;
+	const char *tpe;
+	PyListObject *point;
 
 	printf("[*] Python list info\n");
-	if (strcmp(p->ob_type->tp_name, "list") != 0)
+	if (!PyList_Check(p))
 	{
 		printf("  [ERROR] Invalid List Object\n");
+		fflush(stdout);
 		return;
 	}
-
+	point = (PyListObject *)p;
+	l = PyList_GET_SIZE(p);
+	al = list->allocated;
 	printf("[*] Size of the Python List = %ld\n", l);
-	printf("[*] Allocated = %ld\n", al);
-
-	for (a = 0; a < l; a++)
+	printf("[*] Allocated = %li\n", al);
+	a = 0;
+	while (a < l)
 	{
-		point = current->ob_item[a]->ob_type->tp_name;
-		printf("Element %ld: %s\n", a, point);
-		if (strcmp(point, "bytes") == 0)
-			print_python_bytes(current->ob_item[a]);
-		else if (strcmp(point, "float") == 0)
-			print_python_float(current->ob_item[a]);
+		tpe = (point->ob_item[a])->ob_type->tp_name;
+		printf("Element %li: %s\n", a, tpe);
+		if (strcmp(tpe, "bytes") == 0)
+			print_python_bytes(point->ob_item[a]);
+		else if (strcmp(tpe, "float") == 0)
+			print_python_float(point->ob_item[a]);
+		a++;
 	}
+	fflush(stdout);
 }
 
 /**
