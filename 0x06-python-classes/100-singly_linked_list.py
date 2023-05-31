@@ -47,10 +47,7 @@ class SinglyLinkedList:
     def sorted_insert(self, value):
         """Inserts a new Node to the SinglyLinkedList.
         The node is inserted into the list at the correct
-        ordered numerical position.
-        Args:
-            value (Node): The new Node to insert.
-        """
+        ordered numerical position."""
         new = Node(value)
         if self.__head is None:
             new.next_node = None
@@ -59,12 +56,12 @@ class SinglyLinkedList:
             new.next_node = self.__head
             self.__head = new
         else:
-            tmp = self.__head
-            while (tmp.next_node is not None and
-                    tmp.next_node.data < value):
-                tmp = tmp.next_node
+            p = self.__head
+            while (p.next_node is not None and
+                    p.next_node.data < value):
+                p = p.next_node
             new.next_node = tmp.next_node
-            tmp.next_node = new
+            p.next_node = new
 
     def __str__(self):
         """Defines the print() representation of a SinglyLinkedList."""
