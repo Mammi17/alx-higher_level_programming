@@ -1,11 +1,10 @@
 #!/usr/bin/python3
+"""Defines a MagicClass matching exactly a bytecode provided by Holberton."""
 
 import math
 
 
 class MagicClass:
-    """Defines a MagicClass matching exactly a
-    bytecode provided by Holberton."""
     """Represents a circle."""
 
     def __init__(self, radius=0):
