@@ -47,7 +47,7 @@ void print_python_list(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-	Py_ssize_t size, i;
+	Py_ssize_t size, a;
 	PyBytesObject *bytes = (PyBytesObject *)p;
 
 	fflush(stdout);
@@ -68,13 +68,15 @@ void print_python_bytes(PyObject *p)
 		size = ((PyVarObject *)p)->ob_size + 1;
 
 	printf("  first %ld bytes: ", size);
-	for (i = 0; i < size; i++)
+	a = 0;
+	while (a < size)
 	{
-		printf("%02hhx", bytes->ob_sval[i]);
-		if (i == (size - 1))
+		printf("%02hhx", bytes->ob_sval[a]);
+		if (a == (size - 1))
 			printf("\n");
 		else
 			printf(" ");
+		a++;
 	}
 }
 
@@ -84,7 +86,7 @@ void print_python_bytes(PyObject *p)
  */
 void print_python_float(PyObject *p)
 {
-	char *buffer = NULL;
+	char *buf = NULL;
 
 	PyFloatObject *float_obj = (PyFloatObject *)p;
 
@@ -97,10 +99,10 @@ void print_python_float(PyObject *p)
 		return;
 	}
 
-	buffer = PyOS_double_to_string(float_obj->ob_fval, 'r', 0,
+	buf = PyOS_double_to_string(float_obj->ob_fval, 'r', 0,
 			Py_DTSF_ADD_DOT_0, NULL);
-	printf("  value: %s\n", buffer);
-	PyMem_Free(buffer);
+	printf("  value: %s\n", buf);
+	PyMem_Free(buf);
 }
 
 
