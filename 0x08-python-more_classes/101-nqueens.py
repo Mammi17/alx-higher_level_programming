@@ -1,93 +1,97 @@
 #!/usr/bin/python3
-"""Solves the N-queens puzzle."""
+"""solves the N-queens puzzle"""
+
 import sys
 
 
-def init_tableau(n):
-    """Initialize an NxN sized chessboard with 0's."""
-    tableau = []
-    [tableau.append([]) for a in range(n)]
-    [r.append(' ') for a in range(n) for r in tableau]
-    return (tableau)
+def init_board(n):
+    """Initialize an `n`x`n` sized chessboard with 0's."""
+    board = []
+    [board.append([]) for i in range(n)]
+    [row.append(' ') for i in range(n) for row in board]
+    return (board)
 
 
-def tableau_deepcopy(table):
+def board_deepcopy(board):
     """Return a deepcopy of a chessboard."""
-    if isinstance(table, list):
-        return list(map(tableau_deepcopy, table))
-    return (table)
+    if isinstance(board, list):
+        return list(map(board_deepcopy, board))
+    return (board)
 
 
-def get_solution(table):
-    """Return the list of lists representation of a solved chessboard."""
-    sol = []
-    for a in range(len(table)):
-        for b in range(len(table)):
-            if table[a][b] == "Q":
-                sol.append([a, b])
+def get_solution(board):
+    """Return the list of lists representation
+    of a solved chessboard."""
+    solution = []
+    for r in range(len(board)):
+        for c in range(len(board)):
+            if board[r][c] == "Q":
+                solution.append([r, c])
                 break
-    return (sol)
+    return (solution)
 
 
-def xout(table, row, col):
-    """X out spots on a chessboard."""
+def xout(board, row, col):
+    """X out spots on a chessboard.
+    """
     # X out all forward spots
-    for a in range(col + 1, len(table)):
-        table[row][a] = "x"
+    for c in range(col + 1, len(board)):
+        board[row][c] = "x"
     # X out all backwards spots
-    for a in range(col - 1, -1, -1):
-        table[row][a] = "x"
+    for c in range(col - 1, -1, -1):
+        board[row][c] = "x"
     # X out all spots below
-    for r in range(row + 1, len(table)):
-        table[r][col] = "x"
+    for r in range(row + 1, len(board)):
+        board[r][col] = "x"
     # X out all spots above
     for r in range(row - 1, -1, -1):
-        table[r][col] = "x"
+        board[r][col] = "x"
     # X out all spots diagonally down to the right
-    a = col + 1
-    for r in range(row + 1, len(table)):
-        if a >= len(table):
+    c = col + 1
+    for r in range(row + 1, len(board)):
+        if c >= len(board):
             break
-        table[r][a] = "x"
-        a += 1
+        board[r][c] = "x"
+        c += 1
     # X out all spots diagonally up to the left
-    a = col - 1
+    c = col - 1
     for r in range(row - 1, -1, -1):
-        if a < 0:
+        if c < 0:
             break
-        table[r][a]
-        a -= 1
+        board[r][c]
+        c -= 1
     # X out all spots diagonally up to the right
-    a = col + 1
+    c = col + 1
     for r in range(row - 1, -1, -1):
-        if a >= len(table):
+        if c >= len(board):
             break
-        table[r][a] = "x"
-        a += 1
+        board[r][c] = "x"
+        c += 1
     # X out all spots diagonally down to the left
-    a = col - 1
-    for r in range(row + 1, len(table)):
-        if a < 0:
+    c = col - 1
+    for r in range(row + 1, len(board)):
+        if c < 0:
             break
-        table[r][a] = "x"
-        a -= 1
+        board[r][c] = "x"
+        c -= 1
 
 
-def recursive_solve(table, row, queens, sol):
-    """Recursively solve an N-queens puzzle."""
-    if queens == len(table):
-        sol.append(get_solution(table))
-        return (sol)
+def recursive_solve(board, row, queens, solutions):
+    """Recursively solve an N-queens puzzle.
+    """
+    if queens == len(board):
+        solutions.append(get_solution(board))
+        return (solutions)
 
-    for a in range(len(table)):
-        if table[row][a] == " ":
-            tmp_board = tableau_deepcopy(table)
-            tmp_board[row][a] = "Q"
-            xout(tmp_board, row, a)
-            sol = recursive_solve(tmp_board, row + 1,
-                                        queens + 1, sol)
+    for c in range(len(board)):
+        if board[row][c] == " ":
+            tmp_board = board_deepcopy(board)
+            tmp_board[row][c] = "Q"
+            xout(tmp_board, row, c)
+            solutions = recursive_solve(tmp_board, row + 1,
+                                        queens + 1, solutions)
 
-    return (sol)
+    return (solutions)
 
 
 if __name__ == "__main__":
@@ -101,7 +105,7 @@ if __name__ == "__main__":
         print("N must be at least 4")
         sys.exit(1)
 
-    table = init_tableau(int(sys.argv[1]))
-    solution = recursive_solve(table, 0, 0, [])
-    for sol in solution:
+    board = init_board(int(sys.argv[1]))
+    solutions = recursive_solve(board, 0, 0, [])
+    for sol in solutions:
         print(sol)
