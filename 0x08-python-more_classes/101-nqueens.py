@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """solves the N-queens puzzle"""
-
 import sys
 
 
@@ -20,8 +19,7 @@ def board_deepcopy(board):
 
 
 def get_solution(board):
-    """Return the list of lists representation
-    of a solved chessboard."""
+    """Return the list of lists representation of a solved chessboard."""
     solution = []
     for r in range(len(board)):
         for c in range(len(board)):
