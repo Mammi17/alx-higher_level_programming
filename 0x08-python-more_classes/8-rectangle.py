@@ -4,7 +4,7 @@
 
 
 class Rectangle:
-    """This is an class Rectangle with instance 
+    """This is an class Rectangle with instance
     attribute heigth and width"""
 
     number_of_instances = 0
