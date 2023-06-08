@@ -13,11 +13,11 @@ def matrix_divided(matrix, div):
 
     if div == 0:
         raise ZeroDivisionError("division by zero")
-    for l in matrix:
-        if len(l) != len(matrix[0]):
+    for lt in matrix:
+        if len(lt) != len(matrix[0]):
             raise TypeError(mat1)
         n = []
-        for it in l:
+        for it in lt:
             if not isinstance(it, (int, float)):
                 raise TypeError(mat0)
             else:
