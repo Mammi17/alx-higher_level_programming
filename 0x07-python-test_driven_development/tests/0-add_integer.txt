@@ -12,20 +12,20 @@ First import ``0-add_integer``
 Now use it:
 
 Basic usage:
-    >>> add_integer(4, 2)
-    6
+    >>> add_integer(1, 2)
+    3
 
 Negative input:
-    >>> add_integer(100, -6)
-    94
+    >>> add_integer(100, -2)
+    98
 
 One input:
     >>> add_integer(2)
     100
 
 Float and negative input:
-    >>> add_integer(100.3, -3)
-    97
+    >>> add_integer(100.3, -2)
+    98
 
 Float overflow:
     >>> add_integer(1500.5)
@@ -50,8 +50,8 @@ None input:
     TypeError: a must be an integer
 
 Double negative float input:
-    >>> add_integer(-100.5, -15.8)
-    -115
+    >>> add_integer(-100.5, -10.8)
+    -110
 
 Double string input:
     >>> add_integer("holberton", "school")
