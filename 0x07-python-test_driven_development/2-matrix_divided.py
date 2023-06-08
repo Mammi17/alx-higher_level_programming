@@ -13,7 +13,6 @@ def matrix_divided(matrix, div):
 
     if div == 0:
         raise ZeroDivisionError("division by zero")
-
     for l in matrix:
         if len(l) != len(matrix[0]):
             raise TypeError(mat1)
@@ -24,5 +23,4 @@ def matrix_divided(matrix, div):
             else:
                 n.append(round(it / div, 2))
         res.append(n)
-
     return res
