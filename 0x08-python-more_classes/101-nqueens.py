@@ -82,11 +82,9 @@ def recursive_solve(board, row, queens, solu):
             temp_board = board_deepcopy(board)
             temp_board[row][b] = "Q"
             xout(temp_board, row, b)
-            solu = recursive_solve(temp_board, row + 1,
-                                        queens + 1, solu)
+            solu = recursive_solve(temp_board, row + 1, queens + 1, solu)
 
     return (solu)
-
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
