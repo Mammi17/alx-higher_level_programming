@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Subroutine to print status codes with nonzero value in
-    numericalorder"""
+numericalorder"""
 
 def print_statistic(l, status_codes):
     """script that reads stdin line by line and computes metrics."""
