@@ -2,9 +2,10 @@
 """Subroutine to print status codes with nonzero value in
 numericalorder"""
 
-def print_statistic(l, status_codes):
+
+def print_statistic(lgne, status_codes):
     """script that reads stdin line by line and computes metrics."""
-    print("File size: {}".format(l))
+    print("File size: {}".format(lgne))
     for cle in sorted(status_codes):
         print("{}: {}".format(cle, status_codes[cle]))
 
@@ -20,7 +21,7 @@ if __name__ == "__main__":
     try:
         for a in sys.stdin:
             if res == 10:
-                print_statistic(l, status_codes)
+                print_statistic(lgne, status_codes)
                 res = 1
             else:
                 res += 1
@@ -28,7 +29,7 @@ if __name__ == "__main__":
             a = a.split()
 
             try:
-                l += int(a[-1])
+                lgne += int(a[-1])
             except (IndexError, ValueError):
                 pass
 
@@ -41,8 +42,8 @@ if __name__ == "__main__":
             except IndexError:
                 pass
 
-        print_statistic(l, status_codes)
+        print_statistic(lgne, status_codes)
 
     except KeyboardInterrupt:
-        print_statistic(l, status_codes)
+        print_statistic(lgne, status_codes)
         raise
