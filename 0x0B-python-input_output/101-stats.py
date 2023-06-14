@@ -20,7 +20,7 @@ if __name__ == "__main__":
     try:
         for a in sys.stdin:
             if res == 10:
-                print_stats(l, status_codes)
+                print_statistic(l, status_codes)
                 res = 1
             else:
                 res += 1
@@ -41,7 +41,7 @@ if __name__ == "__main__":
             except IndexError:
                 pass
 
-        print_stats(l, status_codes)
+        print_statistic(l, status_codes)
 
     except KeyboardInterrupt:
         print_statistic(l, status_codes)
