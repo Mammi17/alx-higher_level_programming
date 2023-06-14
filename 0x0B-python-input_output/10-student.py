@@ -20,4 +20,4 @@ class Student:
                 if a in self.__dict__:
                     new.update({a: self.__dict__[a]})
             return new
-        return self.__dict__
+        return self.__dict_copy()_
