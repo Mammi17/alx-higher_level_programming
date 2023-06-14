@@ -3,9 +3,9 @@
 numericalorder"""
 
 
-def print_statistic(lgne, status_codes):
+def print_statistic(t, status_codes):
     """script that reads stdin line by line and computes metrics."""
-    print("File size: {}".format(lgne))
+    print("File size: {}".format(t))
     for cle in sorted(status_codes):
         print("{}: {}".format(cle, status_codes[cle]))
 
@@ -13,7 +13,7 @@ def print_statistic(lgne, status_codes):
 if __name__ == "__main__":
     import sys
 
-    l = 0
+    t = 0
     status_codes = {}
     validc = ['200', '301', '400', '401', '403', '404', '405', '500']
     res = 0
@@ -21,7 +21,7 @@ if __name__ == "__main__":
     try:
         for a in sys.stdin:
             if res == 10:
-                print_statistic(lgne, status_codes)
+                print_statistic(t, status_codes)
                 res = 1
             else:
                 res += 1
@@ -29,7 +29,7 @@ if __name__ == "__main__":
             a = a.split()
 
             try:
-                lgne += int(a[-1])
+                t += int(a[-1])
             except (IndexError, ValueError):
                 pass
 
@@ -42,8 +42,8 @@ if __name__ == "__main__":
             except IndexError:
                 pass
 
-        print_statistic(lgne, status_codes)
+        print_statistic(t, status_codes)
 
     except KeyboardInterrupt:
-        print_statistic(lgne, status_codes)
+        print_statistic(t, status_codes)
         raise
