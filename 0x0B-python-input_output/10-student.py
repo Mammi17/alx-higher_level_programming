@@ -18,7 +18,7 @@ class Student:
         new = {}
         for b in attrs:
             try:
-                new[b] = self.__dict__[a]
+                new[b] = self.__dict__[b]
             except:
                 pass
         return new

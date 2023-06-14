@@ -4,7 +4,7 @@
 
 class Student:
     """a class Student that defines a student"""
-    
+ 
     def __init__(self, first_name, last_name, age):
         """Initializes the student"""
         self.first_name = first_name
@@ -18,7 +18,7 @@ class Student:
         new = {}
         for b in attrs:
             try:
-                new[b] = self.__dict__[a]
+                new[b] = self.__dict__[b]
             except:
                 pass
         return new
