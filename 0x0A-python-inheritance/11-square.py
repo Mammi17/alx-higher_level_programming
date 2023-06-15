@@ -22,4 +22,4 @@ class Square(Rectangle):
         """Computes the area of a Square instance.
         Overwrites the area()"""
 
-        return 2 ** self.__size
+        return self.__size ** 2
