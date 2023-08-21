@@ -10,8 +10,8 @@ if __name__ == "__main__":
         'mysql+mysqldb://{}:{}@localhost/{}'
         .format(argv[1], argv[2],
                 argv[3]), pool_pre_ping=True)
-    Base.metadata.create_all(engine)
-    Session = sessionmaker(bind=engine)
+    Base.metadata.create_all(ngne)
+    Session = sessionmaker(bind=ngne)
     n = Session()
     ste = n.query(State).order_by(State.id).first()
     if ste:
