@@ -10,9 +10,7 @@ Base = declarative_base()
 
 
 class State(Base):
-    """
-    A new SQL table
-    """
+    """A new SQL table"""
     __tablename__ = "states"
     id = Column("id", Integer(), autoincrement=True,
                 nullable=False, primary_key=True)
