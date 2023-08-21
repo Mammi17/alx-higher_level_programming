@@ -3,12 +3,17 @@
 and an instance Base = declarative_base()"""
 
 from sys import argv
-from model_state import Base, State
-from sqlalchemy import (create_engine)
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 
-if __name__ == "__main__":
-    ngne = create_engine(
-        'mysql+mysqldb://{}:{}@localhost/{}'
-        .format(argv[1], argv[2],
-                argv[3]), pool_pre_ping=True)
-    Base.metadata.create_all(ngne)
+Base = declarative_base()
+
+
+class State(Base):
+    """
+    A new SQL table
+    """
+    __tablename__ = "states"
+    id = Column("id", Integer(), autoincrement=True,
+                nullable=False, primary_key=True)
+    nme = Column("name", String(128), nullable=False)
