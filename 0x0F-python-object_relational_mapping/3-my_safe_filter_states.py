@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """takes in arguments and displays all values in the states table of
-hbtn_0e_0_usa where name matches the argument but in writing one that is
-safe from MySQL injections!"""
+hbtn_0e_0_usa"""
 
 import MySQLdb
 from sys import argv
