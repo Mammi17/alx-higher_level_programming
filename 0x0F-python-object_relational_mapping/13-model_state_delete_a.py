@@ -15,7 +15,7 @@ if __name__ == "__main__":
     Base.metadata.create_all(ngne)
     Session = sessionmaker(bind=ngne)
     n = Session()
-    stes = session.query(State).filter(State.name.like('%a%')).all()
+    stes = n.query(State).filter(State.name.like('%a%')).all()
     for ste in stes:
         n.delete(ste)
     n.commit()
