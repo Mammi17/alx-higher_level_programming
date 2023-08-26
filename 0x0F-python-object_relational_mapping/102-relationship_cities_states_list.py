@@ -8,12 +8,12 @@ from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    ngne = create_engine(
+    engine = create_engine(
         'mysql+mysqldb://{}:{}@localhost/{}'
         .format(argv[1], argv[2],
                 argv[3]), pool_pre_ping=True)
 
-    Session = sessionmaker(bind=ngne)
+    Session = sessionmaker(bind=engine)
     n = Session()
     for cty, ste in n.query(City, State)\
             .join(State, State.id == City.state_id)\
