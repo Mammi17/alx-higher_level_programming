@@ -20,6 +20,6 @@ if __name__ == "__main__":
     n.add(n_ste)
     n.commit()
     n_cty = City(name="San Francisco", state_id=n_ste.id)
-    n.add(new_city)
+    n.add(n_cty)
     n.commit()
     n.close()
