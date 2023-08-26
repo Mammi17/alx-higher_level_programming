@@ -16,7 +16,7 @@ class State(Base):
                 autoincrement=True, unique=True)
     name = Column(String(128), nullable=False)
 
-    ctys = relationship(
+    cities = relationship(
         "City",
         cascade="all, delete-orphan",
         backref=backref("state", cascade="all"),
