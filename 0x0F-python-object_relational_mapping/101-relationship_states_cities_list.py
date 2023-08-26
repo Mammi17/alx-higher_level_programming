@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=ngne)
     n = Session()
-    for te in n.query(State).order_by(State.id):
+    for ste in n.query(State).order_by(State.id):
         print("{}: {}".format(ste.id, ste.name))
         for city in ste.cities:
             print("\t{}: {}".format(cty.id, cty.name))
