@@ -9,12 +9,12 @@ from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    ngne = create_engine(
+    engine = create_engine(
         'mysql+mysqldb://{}:{}@localhost:3306/{}'
         .format(argv[1], argv[2],
                 argv[3]), pool_pre_ping=True)
-    Base.metadata.create_all(ngne)
-    Session = sessionmaker(bind=ngne)
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
     n = Session()
     n_ste = State(name="California")
     n.add(n_ste)
