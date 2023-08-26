@@ -1,13 +1,19 @@
 #!/usr/bin/python3
-"""link class to table in database"""
-from sys import argv
-from model_state import Base, State
-from sqlalchemy import (create_engine)
+"""Defines the state model, containing the State class"""
+from sqlalchemy import create_engine, Integer, Column, String
+from sqlalchemy.orm import declarative_base
+
+engine = create_engine('mysql+mysqldb://root:root@localhost/hbtn_0e_6_usa')
+Base = declarative_base()
 
 
-if __name__ == "__main__":
-    ngne = create_engine(
-        'mysql+mysqldb://{}:{}@localhost/{}'
-        .format(argv[1], argv[2],
-                argv[3]), pool_pre_ping=True)
-    Base.metadata.create_all(ngne)
+class State(Base):
+    """State class"""
+    __tablename__ = 'states'
+    id = Column(Integer, primary_key=True,
+                nullable=False, unique=True,
+                autoincrement=True)
+    name = Column(String(128), nullable=False)
+
+    def __repr__(self):
+        return "{}: {}".format(self.id, self.name)
