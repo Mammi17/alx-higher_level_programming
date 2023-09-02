@@ -14,7 +14,7 @@ if __name__ == "__main__":
         q = ""
 
     # Send a POST request to the URL with the letter as a parameter
-    resp = requests.post('http://0.0.0.0:5000/search_user', donnee={'q': q})
+    resp = requests.post('http://0.0.0.0:5000/search_user', data={'q': q})
 
     # Check if the response body is properly JSON formatted and not empty
     try:
