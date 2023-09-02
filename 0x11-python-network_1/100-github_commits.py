@@ -15,9 +15,9 @@ if __name__ == '__main__':
     res = requests.get(url, params=paginate)
 
     if res.status_code == 200:
-        com = res.json()
+        commits = res.json()
 
-        for commit in com:
+        for commit in commits:
             sha = commit['sha']
             author = commit['commit']['author']['name']
             print(f'{sha}: {author}')
