@@ -11,4 +11,3 @@ for (const a in dct) {
   nList = [];
 }
 console.log(ndict);
-

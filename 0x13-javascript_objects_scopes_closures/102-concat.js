@@ -24,4 +24,3 @@ ft.readFile(argv[3].toString(), 'utf8', (err, data) => {
     }
   });
 });
-

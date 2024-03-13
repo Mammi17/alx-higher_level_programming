@@ -7,4 +7,3 @@ exports.converter = function (base) {
     return (n.toString(base));
   };
 };
-

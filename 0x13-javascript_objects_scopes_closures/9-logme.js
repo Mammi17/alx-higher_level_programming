@@ -6,4 +6,3 @@ exports.logMe = function (item) {
   console.log(a + ': ' + item);
   a++;
 };
-
