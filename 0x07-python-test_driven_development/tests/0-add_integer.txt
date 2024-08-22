@@ -28,7 +28,7 @@ Float and negative input:
     98
 float input:
 	>>> add_integer(102.4, 32.1)
-	134.5
+	134
 
 Float overflow:
     >>> add_integer(1500.5)
