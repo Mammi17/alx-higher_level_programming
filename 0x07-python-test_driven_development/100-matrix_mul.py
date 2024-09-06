@@ -29,7 +29,7 @@ def mult(m_a, m_b):
     for ind_a, r_a in enumerate(m_a):
         for ind_b, r_b in enumerate(tr):
             res = dot_product(r_a, r_b)
-            new.append(res)
+            new.append([res])
     return new
 
 def matrix_mul(m_a, m_b):
