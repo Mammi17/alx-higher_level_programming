@@ -29,7 +29,7 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_one_element_list(self):
         """Test the list with a single element."""
-        un_elementt = [7]
+        un_element = [7]
         self.assertEqual(max_integer(un_element), 7)
 
     def test_floats(self):
